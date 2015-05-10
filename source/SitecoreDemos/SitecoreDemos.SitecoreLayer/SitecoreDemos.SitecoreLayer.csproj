@@ -7,8 +7,8 @@
     <ProjectGuid>{043DFEBC-9B35-4629-8341-016CBB77A75A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SitecoreSolution.SitecoreLayer</RootNamespace>
-    <AssemblyName>SitecoreSolution.SitecoreLayer</AssemblyName>
+    <RootNamespace>SitecoreDemos.SitecoreLayer</RootNamespace>
+    <AssemblyName>SitecoreDemos.SitecoreLayer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
