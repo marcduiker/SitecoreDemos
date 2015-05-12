@@ -16,9 +16,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C26259
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5285CB26-1B11-4A49-9BCD-B6307377C9BC}"
-	ProjectSection(SolutionItems) = preProject
-		NuGet.config = NuGet.config
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreDemos.SitecoreLayer", "SitecoreDemos.SitecoreLayer\SitecoreDemos.SitecoreLayer.csproj", "{043DFEBC-9B35-4629-8341-016CBB77A75A}"
 EndProject

@@ -169,6 +169,9 @@
     <Content Include="App_Config\Include\DataFolder.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="App_Config\Include\Search\SitecoreDemos.ContentSearch.Lucene.Index.Common.Master.config" />
+    <Content Include="App_Config\Include\Search\SitecoreDemos.ContentSearch.Lucene.Index.SiteSpecific.Master.config" />
+    <None Include="Properties\PublishProfiles\Local scdemo.pubxml" />
     <None Include="Properties\PublishProfiles\Local Sitecore 8 rev 150228.pubxml" />
     <None Include="Properties\PublishProfiles\Local Sitecore 8 rev 150427.pubxml" />
     <Content Include="Views\Renderings\Sample\SampleInnerSublayout.cshtml" />
