@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreDemos.SitecoreLayer", "SitecoreDemos.SitecoreLayer\SitecoreDemos.SitecoreLayer.csproj", "{043DFEBC-9B35-4629-8341-016CBB77A75A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreDemos.Models", "SitecoreDemos.Models\SitecoreDemos.Models.csproj", "{3531A1E8-45BE-4CE1-A776-D8C7945F668A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{043DFEBC-9B35-4629-8341-016CBB77A75A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{043DFEBC-9B35-4629-8341-016CBB77A75A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{043DFEBC-9B35-4629-8341-016CBB77A75A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3531A1E8-45BE-4CE1-A776-D8C7945F668A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3531A1E8-45BE-4CE1-A776-D8C7945F668A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3531A1E8-45BE-4CE1-A776-D8C7945F668A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3531A1E8-45BE-4CE1-A776-D8C7945F668A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
