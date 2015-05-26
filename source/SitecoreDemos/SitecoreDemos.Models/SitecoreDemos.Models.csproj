@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Domain\Event.cs" />
     <Compile Include="Domain\NewsArticle.cs" />
+    <Compile Include="Domain\PublicationBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search\ContentSearchFacet.cs" />
     <Compile Include="Search\ContentSearchFilter.cs" />

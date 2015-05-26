@@ -48,8 +48,41 @@
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Kernel">
-      <HintPath>..\packages\Sitecore.Kernel.8.0.150427\lib\Sitecore.Kernel.dll</HintPath>
+    <Reference Include="Sitecore.Kernel, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Sitecore.Rocks.Server.1.5.0.0\lib\net45\Sitecore.Kernel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.Mvc">
+      <HintPath>..\packages\Sitecore.Mvc.8.0.150427\lib\Sitecore.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Rocks.Server">
+      <HintPath>..\packages\Sitecore.Rocks.Server.1.5.0.0\lib\net45\Sitecore.Rocks.Server.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.Rocks.Server.Core">
+      <HintPath>..\packages\Sitecore.Rocks.Server.1.5.0.0\lib\net45\Sitecore.Rocks.Server.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.Rocks.Server.Lucene.2313">
+      <HintPath>..\packages\Sitecore.Rocks.Server.1.5.0.0\lib\net45\Sitecore.Rocks.Server.Lucene.2313.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.Rocks.Server.Lucene.2941">
+      <HintPath>..\packages\Sitecore.Rocks.Server.1.5.0.0\lib\net45\Sitecore.Rocks.Server.Lucene.2941.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.Rocks.Server.Lucene.3030">
+      <HintPath>..\packages\Sitecore.Rocks.Server.1.5.0.0\lib\net45\Sitecore.Rocks.Server.Lucene.3030.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.Rocks.Server.Speak">
+      <HintPath>..\packages\Sitecore.Rocks.Server.1.5.0.0\lib\net45\Sitecore.Rocks.Server.Speak.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.Rocks.Server.Validation">
+      <HintPath>..\packages\Sitecore.Rocks.Server.1.5.0.0\lib\net45\Sitecore.Rocks.Server.Validation.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -148,6 +181,7 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +210,8 @@
     <Content Include="Views\Renderings\Sample\SampleLayout.cshtml" />
     <Content Include="Views\Renderings\Sample\SampleRendering.cshtml" />
     <Content Include="Views\Renderings\Sample\SampleSublayout.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Shared\Search layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -185,13 +221,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SitecoreDemos.Models\SitecoreDemos.Models.csproj">
+      <Project>{3531a1e8-45be-4ce1-a776-d8c7945f668a}</Project>
+      <Name>SitecoreDemos.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SitecoreDemos.SitecoreLayer\SitecoreDemos.SitecoreLayer.csproj">
+      <Project>{043dfebc-9b35-4629-8341-016cbb77a75a}</Project>
+      <Name>SitecoreDemos.SitecoreLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

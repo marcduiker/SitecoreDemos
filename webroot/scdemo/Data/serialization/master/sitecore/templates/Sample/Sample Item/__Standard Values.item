@@ -20,9 +20,16 @@ content-length: 77
 field: {F1A1FE9E-A60C-4DDB-A3A0-BB5B29FE732E}
 name: __Renderings
 key: __renderings
-content-length: 747
+content-length: 436
 
-<r xmlns:xsd="http://www.w3.org/2001/XMLSchema"><d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}" l="{14030E9F-CE92-49C6-AD87-7D49B50E42EA}"><r ds="" id="{885B8314-7D8C-4CBB-8000-01421EA8F406}" par="" ph="main" uid="{43222D12-08C9-453B-AE96-D406EBB95126}" /><r ds="" id="{CE4ADCFB-7990-4980-83FB-A00C1E3673DB}" par="" ph="/main/centercolumn" uid="{CF044AD9-0332-407A-ABDE-587214A2C808}" /><r ds="" id="{493B3A83-0FA7-4484-8FC9-4680991CF743}" par="" ph="/main/centercolumn/content" uid="{B343725A-3A93-446E-A9C8-3A2CBD3DB489}" /></d><d id="{46D2F427-4CE5-4E1F-BA10-EF3636F43534}" l="{14030E9F-CE92-49C6-AD87-7D49B50E42EA}"><r ds="" id="{493B3A83-0FA7-4484-8FC9-4680991CF743}" par="" ph="content" uid="{A08C9132-DBD1-474F-A2CA-6CA26A4AA650}" /></d></r>
+<r>
+  <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}" l="{13B1CCC9-CB57-44E4-BA23-6A39F8EC7E16}">
+    <r id="{51E67C40-4644-462A-AB0A-1A6FA46DFA28}" ph="main" uid="{50A84781-A8FA-45D6-85B9-DC6F0544BA4C}" />
+  </d>
+  <d id="{46D2F427-4CE5-4E1F-BA10-EF3636F43534}" l="{14030E9F-CE92-49C6-AD87-7D49B50E42EA}">
+    <r id="{493B3A83-0FA7-4484-8FC9-4680991CF743}" ph="content" uid="{A08C9132-DBD1-474F-A2CA-6CA26A4AA650}" />
+  </d>
+</r>
 ----field----
 field: {CA9B9F52-4FB0-4F87-A79F-24DEA62CDA65}
 name: __Default workflow
@@ -33,7 +40,7 @@ content-length: 38
 ----version----
 language: en
 version: 1
-revision: 706f7328-ecda-4a80-9063-546b3f562c44
+revision: 2343622e-e805-49c4-900d-5058eeb2c3d1
 
 ----field----
 field: {75577384-3C97-45DA-A847-81B00500E250}
@@ -69,14 +76,14 @@ name: __Revision
 key: __revision
 content-length: 36
 
-706f7328-ecda-4a80-9063-546b3f562c44
+2343622e-e805-49c4-900d-5058eeb2c3d1
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
-content-length: 34
+content-length: 35
 
-20111107T152227:634562761479348724
+20150526T191318:635682643982000275Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by

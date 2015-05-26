@@ -1,9 +1,11 @@
-﻿namespace SitecoreDemos.SitecoreLayer.Models
-{
-    public class Event
-    {
-        public string Title { get; set; }
+﻿using System;
 
-        public string Text { get; set; }
+namespace SitecoreDemos.Models.Domain
+{
+    public class Event : PublicationBase
+    {
+        public string Location { get; set; }
+
+        public DateTime DateAndTime { get; set; }
     }
 }

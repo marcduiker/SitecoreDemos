@@ -21,11 +21,11 @@ namespace SitecoreDemos.SitecoreLayer.Search
         /// </summary>
         /// <param name="searchstring">The searchstring.</param>
         /// <returns>A collection of ContentSearchResultItem limited to 5 items.</returns>
-        public static List<ContentSearchResultItem> Search(string searchstring)
+        public ContentSearchResult Search(string searchstring)
         {
             const int resultLimit = 5;
 
-            var result = new List<ContentSearchResultItem>();
+            var result = new ContentSearchResult();
             string index = GetSearchIndexName();
 
             using (var context = ContentSearchManager.GetIndex(index).CreateSearchContext())
@@ -45,14 +45,16 @@ namespace SitecoreDemos.SitecoreLayer.Search
                     searchResult,
                     EventTemplate.ID);
 
-                return result.Distinct().ToList();
+                result.ResultCount = result.ContentSearchResultItems.Count;
+
+                return result;
             }
         }
 
         private static string GetSearchIndexName()
         {
             return string.Format(
-                "news_{0}_index",
+                "custom_search_{0}_index",
                 Sitecore.Context.Database.Name.ToLower());
         }
 
@@ -61,7 +63,7 @@ namespace SitecoreDemos.SitecoreLayer.Search
         /// </summary>
         /// <param name="filter">The ContentSearchFilter.</param>
         /// <returns></returns>
-        public static ContentSearchResult SearchWithFacets(ContentSearchFilter filter)
+        public ContentSearchResult SearchWithFacets(ContentSearchFilter filter)
         {
             var contentSearchResult = new ContentSearchResult
             {
@@ -92,11 +94,11 @@ namespace SitecoreDemos.SitecoreLayer.Search
                 var distinctHits = searchResult.Hits.Distinct().ToList();
 
                 UpdateResultWithItem(
-                    contentSearchResult.ContentSearchResultItems,
+                    contentSearchResult,
                     distinctHits,
                     NewsTemplate.ID);
                 UpdateResultWithItem(
-                    contentSearchResult.ContentSearchResultItems,
+                    contentSearchResult,
                     distinctHits,
                     EventTemplate.ID);
 
@@ -150,10 +152,9 @@ namespace SitecoreDemos.SitecoreLayer.Search
                 var searchTerms = searchstring.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 // Search in the specific fields of the templates instead of the computed Content field.
                 predicate = searchTerms.Aggregate(predicate, (current, term) => current.Or(
-                    item => item[NewsTemplate.Fields.Text].Contains(term) ||
-                            item[NewsTemplate.Fields.DisplayName].Contains(term) ||
-                            item[EventTemplate.Fields.DisplayName].Contains(term) ||
-                            item[EventTemplate.Fields.Text].Contains(term) ||
+                    item => item["__displayname"].Contains(term) ||
+                            item[PublicationBaseTemplate.Fields.Text].Contains(term) ||
+                            item[PublicationBaseTemplate.Fields.Title].Contains(term) ||
                             item[EventTemplate.Fields.Location].Contains(term)));
 
                 query = query.Filter(predicate);
@@ -179,7 +180,7 @@ namespace SitecoreDemos.SitecoreLayer.Search
         }
 
         private static void UpdateResultWithItem(
-            List<ContentSearchResultItem> searchResultCollection,
+            ContentSearchResult contentSearchResult,
             IEnumerable<SearchHit<SearchResultItem>> searchHitCollection,
             ID templateId)
         {
@@ -197,7 +198,7 @@ namespace SitecoreDemos.SitecoreLayer.Search
                         Url = LinkManager.GetItemUrl(item)
                     };
 
-                    searchResultCollection.Add(resultaat);
+                    contentSearchResult.ContentSearchResultItems.Add(resultaat);
                 }
             }
         }

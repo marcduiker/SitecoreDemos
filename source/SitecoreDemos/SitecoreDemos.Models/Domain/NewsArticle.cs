@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SitecoreDemos.SitecoreLayer.Models
+﻿namespace SitecoreDemos.Models.Domain
 {
-    public class NewsArticle
+    public class NewsArticle : PublicationBase
     {
-        public string Title { get; set; }
-
-        public string Text { get; set; }
+        
     }
 }

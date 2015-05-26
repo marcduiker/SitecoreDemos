@@ -55,6 +55,7 @@
     <Compile Include="Search\ContentSearch.cs" />
     <Compile Include="Templates\EventTemplate.cs" />
     <Compile Include="Templates\NewsTemplate.cs" />
+    <Compile Include="Templates\PublicationBaseTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
