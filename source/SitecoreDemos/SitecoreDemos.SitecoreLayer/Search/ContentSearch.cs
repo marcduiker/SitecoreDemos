@@ -3,7 +3,6 @@ using Sitecore.ContentSearch.Linq;
 using Sitecore.ContentSearch.Linq.Utilities;
 using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.Data;
-using Sitecore.Data.Items;
 using Sitecore.Links;
 using SitecoreDemos.Models.Search;
 using SitecoreDemos.SitecoreLayer.Templates;
@@ -194,7 +193,7 @@ namespace SitecoreDemos.SitecoreLayer.Search
                 {
                     var resultaat = new ContentSearchResultItem
                     {
-                        Title = item.DisplayName,
+                        Title = item[PublicationBaseTemplate.Fields.Title],
                         Url = LinkManager.GetItemUrl(item)
                     };
 
