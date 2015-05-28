@@ -177,7 +177,7 @@ namespace SitecoreDemos.SitecoreLayer.Search
                 foreach (var template in templates)
                 {
                     ID id;
-                    if (ID.TryParse(template, out id))
+                    if (TryGetSitecoreId(template, out id))
                     {
                         templateIdCollection.Add(id);
                     }
@@ -240,14 +240,20 @@ namespace SitecoreDemos.SitecoreLayer.Search
 
         internal string GetFacetName(string templateId)
         {
-            Guid guid = new Guid(templateId);
             ID id;
-            if (ID.TryParse(guid, out id))
+            if (TryGetSitecoreId(templateId, out id))
             {
                 return ItemHelper.GetItem(id).DisplayName;
             }
 
             return string.Empty;
+        }
+
+        internal static bool TryGetSitecoreId(string itemId, out ID id)
+        {
+            var guid = new Guid(itemId);
+
+            return ID.TryParse(guid, out id);
         }
     }
 }

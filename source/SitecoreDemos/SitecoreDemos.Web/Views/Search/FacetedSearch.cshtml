@@ -2,7 +2,7 @@
 
 <h1>Faceted search result</h1>
 
-<p>Facets:</p>
+<p>All facets (number indicates the occurance of the search term):</p>
 <ul>
 @foreach (var facet in @Model.Facets)
 {
@@ -10,7 +10,7 @@
 }
 </ul>
 
-<p>Number of results: @Model.ResultCount</p>
+<p>Results: @Model.ResultCount</p>
 <ul>
     @foreach (var resultItem in @Model.ContentSearchResultItems)
     {
