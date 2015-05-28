@@ -112,6 +112,16 @@ namespace SitecoreDemos.SitecoreLayer.Search
             }
         }
 
+        public ContentSearchFilter GetContentSearchFilter(string searchText, string templateId)
+        {
+            return new ContentSearchFilter
+            {
+                SearchText = searchText,
+                Paging = new Paging(),
+                Templates = new List<string>{templateId}
+            };
+        }
+
         internal static void UpdateResultWithPaging(ContentSearchResult result, ContentSearchFilter filter, out int numberToSkip)
         {
             result.Paging.PageSize = filter.Paging.PageSize;
@@ -127,7 +137,7 @@ namespace SitecoreDemos.SitecoreLayer.Search
         /// <param name="facetResultsAfterSearch">Facets that contain results after querying using the search text. This is used to get the result count per facet.</param>
         /// <param name="searchResults">The collection of SearchResultItems after the search on searchtext and filtering on templates.</param>
         /// <param name="contentSearchResult">Result object which is updated with facets.</param>
-        private static void UpdateResultWithFacets(FacetResults facetResults, FacetResults facetResultsAfterSearch, SearchResults<SearchResultItem> searchResults, ContentSearchResult contentSearchResult)
+        private void UpdateResultWithFacets(FacetResults facetResults, FacetResults facetResultsAfterSearch, SearchResults<SearchResultItem> searchResults, ContentSearchResult contentSearchResult)
         {
             var allFacets = facetResults.Categories.FirstOrDefault();
             FacetCategory searchFacets = null;
@@ -142,7 +152,7 @@ namespace SitecoreDemos.SitecoreLayer.Search
             }
         }
 
-        private static void ApplySearchStringQuery(string searchstring, ref IQueryable<SearchResultItem> query)
+        private void ApplySearchStringQuery(string searchstring, ref IQueryable<SearchResultItem> query)
         {
             if (!string.IsNullOrEmpty(searchstring))
             {
@@ -151,8 +161,7 @@ namespace SitecoreDemos.SitecoreLayer.Search
                 var searchTerms = searchstring.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 // Search in the specific fields of the templates instead of the computed Content field.
                 predicate = searchTerms.Aggregate(predicate, (current, term) => current.Or(
-                    item => item["__displayname"].Contains(term) ||
-                            item[PublicationBaseTemplate.Fields.Text].Contains(term) ||
+                    item => item[PublicationBaseTemplate.Fields.Text].Contains(term) ||
                             item[PublicationBaseTemplate.Fields.Title].Contains(term) ||
                             item[EventTemplate.Fields.Location].Contains(term)));
 
@@ -162,7 +171,7 @@ namespace SitecoreDemos.SitecoreLayer.Search
 
         private static void ApplyTemplateQuery(IList<string> templates, ref IQueryable<SearchResultItem> query)
         {
-            if (templates != null && templates.Any())
+            if (templates != null && templates.Any() && templates.All(t => !string.IsNullOrEmpty(t)))
             {
                 var templateIdCollection = new List<ID>();
                 foreach (var template in templates)
@@ -209,7 +218,7 @@ namespace SitecoreDemos.SitecoreLayer.Search
         /// <param name="searchFacetCategory">The FacetCategory after searching on the searchtext. This contains the resultcount per facet.</param>
         /// <param name="searchResultsCategory">The FacetCategory after filtering on template. This is used to determine which facets are selected.</param>
         /// <returns></returns>
-        internal static ContentSearchFacet GetFacet(FacetValue facetValue, FacetCategory searchFacetCategory, FacetCategory searchResultsCategory)
+        internal ContentSearchFacet GetFacet(FacetValue facetValue, FacetCategory searchFacetCategory, FacetCategory searchResultsCategory)
         {
             // A FacetValue doesn't contain a usable description of the facet, just the template ID (as a string).
             // A lookup will be done to get a usable desciption for the facet.
@@ -223,10 +232,22 @@ namespace SitecoreDemos.SitecoreLayer.Search
                 ResultCount = searchFacetValue != null ? searchFacetValue.AggregateCount : 0,
                 IsSelected = searchResultFacetValue != null,
                 TemplateId = templateId,
-                Name = "" //TODO lookup name based on template ID
+                Name = GetFacetName(templateId)
             };
 
             return facet;
+        }
+
+        internal string GetFacetName(string templateId)
+        {
+            Guid guid = new Guid(templateId);
+            ID id;
+            if (ID.TryParse(guid, out id))
+            {
+                return ItemHelper.GetItem(id).DisplayName;
+            }
+
+            return string.Empty;
         }
     }
 }

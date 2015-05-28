@@ -209,8 +209,9 @@
     <Content Include="Views\Renderings\Sample\SampleLayout.cshtml" />
     <Content Include="Views\Renderings\Sample\SampleRendering.cshtml" />
     <Content Include="Views\Renderings\Sample\SampleSublayout.cshtml" />
-    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\Shared\Search layout.cshtml" />
+    <Content Include="Views\Search\FacetedSearch.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

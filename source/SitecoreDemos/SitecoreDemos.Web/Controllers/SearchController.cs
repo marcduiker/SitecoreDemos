@@ -1,15 +1,11 @@
 ﻿using SitecoreDemos.SitecoreLayer.Search;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SitecoreDemos.Web.Controllers
 {
     public class SearchController : Controller
     {
-        private ContentSearch contentSearch;  
+        private readonly ContentSearch contentSearch;  
         
         public SearchController()
         {
@@ -17,9 +13,17 @@ namespace SitecoreDemos.Web.Controllers
         }
         
         // GET: Search
-        public ActionResult Index(string q)
+        public ActionResult Search(string q)
         {
             var result = contentSearch.Search(q);
+            return View(result);
+        }
+
+        // GET: Faceted Search
+        public ActionResult FacetedSearch(string q, string t)
+        {
+            var filter = contentSearch.GetContentSearchFilter(q, t);
+            var result = contentSearch.SearchWithFacets(filter);
             return View(result);
         }
     }
